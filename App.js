@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React,{Component,useState} from 'react';
 import { Text, 
          View, 
          StyleSheet,
@@ -11,6 +11,11 @@ import { Text,
 
 
 class App extends Component {
+  
+  state = {
+    city: 'São Paulo'
+  }
+  
   render(){
     
     
@@ -26,7 +31,7 @@ return (
   <Image 
     source={require('./image/cloud.png')}/>
     
-	<Text style={[styles.largeText,styles.textStyle]}>São Paulo</Text>
+	<Text style={[styles.largeText,styles.textStyle]}>{this.state.city}</Text>
 	<Text style={[styles.smallText,styles.textStyle]}>Nuvens</Text>
 	<Text style={[styles.largeText,styles.textStyle]}>18°</Text>
 	<TextInput 
@@ -34,7 +39,9 @@ return (
 	    placeholder = "Busque uma cidade" 
 		  placeholderTextColor = "white" 
 		  style = {styles.textInput}
-		  clearButtonMode = "always" />
+		  clearButtonMode = "always"
+      onChangeText={(value) => this.setState({ city: value })}
+       />
 
   </ImageBackground> 
 
